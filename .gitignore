@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Angular build
+frontend/dist/
+frontend/.angular/
+
+# NestJS build
+backend/dist/
+backend/.env
+backend/prisma/dev.db
+backend/prisma/migrations/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
