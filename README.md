@@ -33,19 +33,15 @@ prueba-tecnica/
 ```bash
 cd prueba-tecnica
 npm install
-npx prisma generate
-npx prisma migrate dev --name init
 npm run start:dev
 
 Frontend (Angular)
-bash
-Copiar
-Editar
 cd PruebaTecnicaFront
 npm install
 ng serve
 
 Abre en el navegador: http://localhost:4200
+la ruta de acceso al backend esta ya enlazada al Front
 
 ⚙️ Tecnologías
 Frontend: Angular 17, HTML, CSS
