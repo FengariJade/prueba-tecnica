@@ -1,0 +1,11 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto de prueba",
+      "description": "Este es un producto de ejemplo",
+      "price": 120
+    }
+  ],
+  "users": []
+}

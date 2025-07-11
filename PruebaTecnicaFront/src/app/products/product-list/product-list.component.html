@@ -1,0 +1,63 @@
+<button class="back-btn" (click)="volverAlLogin()">← Volver al login</button>
+
+<div class="product-wrapper">
+  <div class="glass-card">
+    <h2 class="text-center">Productos</h2>
+    <h2 class="text-center">¡Carga el producto que quieras!</h2>
+
+    <form (ngSubmit)="createProduct()" [formGroup]="productForm">
+      <div class="mb-3">
+        <label>Nombre</label>
+        <input type="text" class="form-control" formControlName="name" placeholder="Nombre del producto">
+      </div>
+      <div class="mb-3">
+        <label>Descripción</label>
+        <input type="text" class="form-control" formControlName="description" placeholder="Descripción">
+      </div>
+      <div class="mb-3">
+        <label>Precio</label>
+        <input type="number" class="form-control" formControlName="price" placeholder="Precio">
+      </div>
+      <div class="button-row">
+        <button type="submit" class="btn btn-primary w-50">Agregar producto</button>
+        <button type="button" class="btn btn-light w-50" (click)="showModal = true">Ver productos</button>
+      </div>
+    </form>
+    
+  </div>
+</div>
+
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal-glass">
+    <h4 class="text-center mb-3">Productos añadidos</h4>
+
+    <ng-container *ngIf="paginatedProducts.length > 0; else noProducts">
+      <ul class="list-unstyled">
+        <li *ngFor="let p of paginatedProducts" class="d-flex justify-content-between align-items-center mb-2">
+          <span>{{ p.name }} - ${{ p.price }}</span>
+        </li>
+      </ul>
+
+      <div class="pagination-controls" *ngIf="totalPages > 1">
+        <button class="btn btn-outline-light btn-sm pagination-btn" (click)="prevModalPage()" [disabled]="modalPage === 1">
+          Anterior
+        </button>
+
+        <span class="text-white">Página {{ modalPage }} de {{ totalPages }}</span>
+
+        <button class="btn btn-outline-light btn-sm pagination-btn" (click)="nextModalPage()" [disabled]="modalPage === totalPages">
+          Siguiente
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-template #noProducts>
+      <p class="text-center">No hay productos aún.</p>
+    </ng-template>
+
+    <button class="btn btn-danger mt-4 w-100" (click)="showModal = false">Cerrar</button>
+  </div>
+</div>
+
+<div class="toast-notify" *ngIf="showToast">Producto agregado</div>
+
